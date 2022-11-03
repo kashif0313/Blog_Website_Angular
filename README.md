@@ -1,5 +1,5 @@
-# Blog Website in Angular Framework
-this website Backend is in firebase and Ui is Angular Material UI
+# Blog Website in Angular Framework (still in Developement)
+this website Backend is in firebase and Ui is Angular Material UI<br>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
 ## Development server
