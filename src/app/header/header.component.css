@@ -1,0 +1,12 @@
+.example-spacer {
+    margin-left: 10%;
+}
+
+.example-spacer1 {
+    flex: 1 1 auto;
+}
+
+.welcomeName {
+    position: relative;
+    margin-right: 20px;
+}

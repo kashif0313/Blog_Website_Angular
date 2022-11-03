@@ -1,0 +1,27 @@
+<mat-card class="Signup">
+
+
+    <h1>Signup</h1>
+
+    <form [formGroup]="signupForm" (ngSubmit)="submit()">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name">
+        </mat-form-field><br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+        </mat-form-field><br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>password</mat-label>
+            <input matInput type="password" formControlName="password">
+        </mat-form-field><br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Confirm password</mat-label>
+            <input matInput type="password" formControlName="passwordConfirm">
+        </mat-form-field><br>
+
+        <button mat-raised-button color="primary">Signup</button>
+    </form>
+</mat-card>

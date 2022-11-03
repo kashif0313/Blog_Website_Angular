@@ -1,0 +1,22 @@
+<mat-card class="Signup">
+    <h1>Profile</h1>
+    <form (ngSubmit)="submit()">
+        <ng-container *ngIf="authSer.$CurrentUser |async as user">
+
+            <div class="uploadImage">
+                <img [src]="user.photoURL" alt="" class="profileimg">
+                <input type="file" (change)="uploadedImage($event)" hidden #uploadProfileImg>
+                <button mat-mini-fab (click)="uploadProfileImg.click()"><mat-icon>add</mat-icon></button>
+            </div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" [value]="user.displayName" #name>
+            </mat-form-field><br>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" [value]="user.email" #email>
+            </mat-form-field><br>
+            <button mat-raised-button color="primary">Update</button>
+        </ng-container>
+    </form>
+</mat-card>

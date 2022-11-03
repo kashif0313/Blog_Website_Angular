@@ -1,0 +1,40 @@
+<mat-card class="PostBlogContainer" [style.display]="postPopup">
+    <div class="example-button-container">
+        <button mat-mini-fab color="accent" (click)="closeAddBlog()">
+            <mat-icon>clear</mat-icon>
+    </button>
+    </div>
+    <br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" [(ngModel)]="blogTitle">
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Blog</mat-label>
+        <textarea matInput [(ngModel)]="blog"></textarea>
+    </mat-form-field><br>
+    <button mat-raised-button color="primary"><input type="file" (change)="uploadedImage($event)">{{UploadingProgress + "%"}}</button>
+
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput type="date" [(ngModel)]="uploadDate">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Time</mat-label>
+        <input type="time" matInput [(ngModel)]="uploadTime">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Uploaded By</mat-label>
+        <input type="name" matInput [(ngModel)]="uploadBy">
+    </mat-form-field><br>
+
+    <button (click)="collectData()" mat-raised-button color="primary">Upload</button>
+    <!-- <img src={{uploading}} height="100px" width="100px"> -->
+    <div class="uploading" [style.display]="uploadingProgress">
+        <mat-spinner></mat-spinner>
+    </div>
+</mat-card>

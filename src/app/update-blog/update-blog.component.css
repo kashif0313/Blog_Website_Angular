@@ -1,0 +1,32 @@
+.getBlog {
+    position: relative;
+    left: 10%;
+    width: 80%;
+    justify-content: center;
+    text-align: center;
+}
+
+.blogTitle {
+    position: relative;
+    font-size: 2vw;
+}
+
+.blogImage {
+    position: relative;
+    width: 80%;
+    left: 0%;
+    height: 300px;
+    object-fit: contain;
+    border: 2px solid red;
+    border-radius: 30px;
+}
+
+.BlogTextarea {
+    position: relative;
+    font-size: 1.2vw;
+    width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+    border: 2px solid green;
+    height: 100%;
+}

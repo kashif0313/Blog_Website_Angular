@@ -1,0 +1,13 @@
+<div class="getBlog" *ngFor='let doc of blogArrayGet'>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>title</mat-label>
+        <input matInput class="blogTitle" type="text" value="{{doc.title}}">
+    </mat-form-field><br>
+    <input type="file" (change)="uploadedImage($event)" placeholder="changeImage">
+    <img src="{{imgSrcBlog}}" class="blogImage"><br>
+    <label for="blogUploaded">Blog PostedBy </label>
+    <input id="blogUploaded" [(ngModel)]="updatePostedBy"><br>
+    <label for="blogDiscription">Blog Discription </label>
+    <input class="BlogTextarea" id="blogDiscription" [(ngModel)]="updateText">
+</div>
+<button (click)="updateData()">Update</button>

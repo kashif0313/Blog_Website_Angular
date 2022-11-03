@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" (click)="homeGOTO()">Home</button>
+    <button mat-raised-button color="warn" (click)="addBlog()">Add Blog</button>
+    <span class="example-spacer1"></span>
+    <ng-container *ngIf="authService.$CurrentUser |async as user">
+        <span class="welcomeName">
+        {{"Welcome "+user.displayName}}
+    </span>
+    </ng-container>
+    <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+           
+            <mat-icon [matMenuTriggerFor]="menu">person</mat-icon>
+          </button>
+    <mat-menu #menu="matMenu">
+        <ng-container *ngIf="authService.$CurrentUser |async as user; else loginbtn">
+            <button mat-menu-item (click)="logOut()">Logout</button>
+            <button mat-menu-item (click)="profile()">Profile</button>
+        </ng-container>
+        <ng-template #loginbtn>
+            <button mat-menu-item [routerLink]="['/loginPage']">Login</button>
+            <button mat-menu-item [routerLink]="['/signUpPage']">Signup</button>
+        </ng-template>
+
+
+    </mat-menu>
+</mat-toolbar>
