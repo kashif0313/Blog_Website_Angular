@@ -4,6 +4,7 @@ import { AppComponent } from '../app.component';
 import { UpdateBlogComponent } from '../update-blog/update-blog.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { Router } from '@angular/router';
+import { AuthServiceService } from '../services/auth-service.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class LatestBlogsComponent implements OnInit {
   @Output() editBlog = new EventEmitter<{display:any,blogID:any}>(); 
   imageSource:any;
   
-  constructor(private home:AppComponent,private afm:AngularFirestore,private router:Router,private upadateBlog:UpdateBlogComponent) { }
+  constructor(private home:AppComponent,private afm:AngularFirestore,private router:Router,private upadateBlog:UpdateBlogComponent,public authService:AuthServiceService) { }
 
   ngOnInit(): void {
     this.getBlog();    
@@ -52,37 +53,7 @@ export class LatestBlogsComponent implements OnInit {
      this.blogId.emit(ab);
      
   }
-  editBlogdata(data:number)
-  {
-    // var blogID = this.blogArrayID[data];
-    // this.upadateBlog.retrivedata(ab);
-    // console.log("before homeUpdate = "+this.display.updateBlog)
-    // this.display.updateBlog="true";
-    // console.log("homeUpdate = "+this.display.updateBlog)
-    // var display = "block";
-    // this.editBlog.emit({display, blogID});
-    this.router.navigate(['/EditBlog',data]);
-  }
-  deleteConfirmation(data:number,data1:string)
-  {
-    this.deleteConfirm="block";
-     this.blogID = this.blogArrayID[data];
-     this.deleteBlogTitle = data1;
-  }
-  cancelDelete()
-  {
-    this.deleteConfirm="none";
-  }
-  deleteBlogdata()
-  {
-    this.afm.collection("Blogs").doc(this.blogID).delete().then(() => {
-      console.log("Document successfully deleted!");
-  }).catch((error) => {
-      console.error("Error removing document: ", error);
-  });
-  this.deleteConfirm="none";
-  this.home.refreshPage();
-  }
+  
 
   sendingBlogID(data:any)
   {

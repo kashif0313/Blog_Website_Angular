@@ -4,10 +4,11 @@
         <input matInput class="blogTitle" type="text" value="{{doc.title}}">
     </mat-form-field><br>
     <input type="file" (change)="uploadedImage($event)" placeholder="changeImage">
-    <img src="{{imgSrcBlog}}" class="blogImage"><br>
+
+    <img src={{doc.imageSrc}} class="blogImage"><br>
     <label for="blogUploaded">Blog PostedBy </label>
-    <input id="blogUploaded" [(ngModel)]="updatePostedBy"><br>
+    <input id="blogUploaded" [(ngModel)]="doc.uploadBy"><br>
     <label for="blogDiscription">Blog Discription </label>
-    <input class="BlogTextarea" id="blogDiscription" [(ngModel)]="updateText">
+    <input class="BlogTextarea" id="blogDiscription" [(ngModel)]="doc.blog">
 </div>
 <button (click)="updateData()">Update</button>

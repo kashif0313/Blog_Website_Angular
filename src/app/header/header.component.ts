@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   currentUserName:any;
 
+
   constructor(private display:AppComponent,private blogsEdit:LatestBlogsComponent,private router: Router,public authService:AuthServiceService) { }
 
   ngOnInit(): void {
@@ -22,13 +23,10 @@ export class HeaderComponent implements OnInit {
   {
     this.router.navigate(['/blogsHome'])
   }
-  addBlog()
-  {
-    this.router.navigate(['/addBlog'])
-  }
   logOut()
   {
-    this.authService.logOut().subscribe(()=>{}) 
+    this.authService.logOut().subscribe(()=>{}) ;
+    this.router.navigate(['/blogsHome']);
   }
   profile()
   {

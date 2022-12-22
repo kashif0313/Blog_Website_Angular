@@ -8,8 +8,7 @@ import { AuthServiceService } from '../services/auth-service.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  @ViewChild("name") name!: ElementRef;
-  @ViewChild("email") email!: ElementRef;
+  
   constructor(public authSer:AuthServiceService) { }
 
   ngOnInit(): void {
@@ -17,7 +16,7 @@ export class UserProfileComponent implements OnInit {
   }
   submit()
   {
-    this.authSer.updateUser(this.name,this.email)
+    this.authSer.updateUser()
   }
   uploadedImage(data:any)
   {

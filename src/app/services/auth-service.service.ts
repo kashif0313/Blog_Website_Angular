@@ -11,10 +11,13 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class AuthServiceService {
 
   $CurrentUser = authState(this.auth);
+  loginUserName :any;
   userNewId:any;
   userId:any = this.auth.onAuthStateChanged((user) => {if (user) {
    
     this.userNewId = user.uid;
+    this.loginUserName = user.displayName;
+    sessionStorage.setItem("userActive", user.uid);
     // ...
   }})
 
@@ -35,6 +38,7 @@ export class AuthServiceService {
         {
           throw new Error("not activated");
         }
+        
         return updateProfile(user,profileData);
       })
     )
@@ -48,7 +52,7 @@ export class AuthServiceService {
   })
   }
   login(username:string,password:string)
-  {
+  { 
     return from(signInWithEmailAndPassword(this.auth,username,password))
   }
   logOut()
@@ -57,10 +61,6 @@ export class AuthServiceService {
   }
   updateUser()
   {
-    var userDetails = this.auth.updateCurrentUser;
-    userDetails.updateProfile({
-      displayName: "Jane Q. User",
-      photoURL: "https://example.com/jane-q-user/profile.jpg"
-    })
+    
   }
 }

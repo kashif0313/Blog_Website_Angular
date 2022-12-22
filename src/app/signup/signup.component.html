@@ -8,20 +8,28 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Name</mat-label>
             <input matInput type="text" formControlName="name">
+            <mat-error *ngIf="name?.errors?.['required']">Enter Name </mat-error>
         </mat-form-field><br>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="email">
+            <mat-error *ngIf="email?.errors?.['required']">Enter Email </mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">Enter correct Email </mat-error>
         </mat-form-field><br>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>password</mat-label>
             <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="password?.errors?.['required']">Enter Password </mat-error>
         </mat-form-field><br>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Confirm password</mat-label>
             <input matInput type="password" formControlName="passwordConfirm">
+            <mat-error *ngIf="password?.errors?.['required']">Enter Confirm Password </mat-error>
         </mat-form-field><br>
 
         <button mat-raised-button color="primary">Signup</button>
+        <br>
+        <hr>
+        <p>Already have a Account <a [routerLink]="['/loginPage']">Login</a></p>
     </form>
 </mat-card>

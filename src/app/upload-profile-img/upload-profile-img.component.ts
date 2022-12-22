@@ -67,7 +67,10 @@ export class UploadProfileImgComponent implements OnInit {
 
         reader.readAsDataURL(this.file);
         console.log("event file = "+this.previewAlt);
-
-
+  }
+  skipImage()
+  {
+    this.uploadedImage(this.previewAlt);
+    this.submit();
   }
 }

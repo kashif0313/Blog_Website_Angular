@@ -1,0 +1,59 @@
+.imgBlog {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+}
+
+.latestBlogs {
+    position: relative;
+    border: 2px solid blue;
+    font-size: 1.2vw;
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.latestBlogsCont {
+    position: relative;
+    border: 2px solid red;
+    width: 80%;
+    left: 10%;
+}
+
+.latestBlogTitle {
+    font-size: 1.5vw;
+    justify-content: center;
+    text-align: center;
+    margin-left: 2%;
+}
+
+.latestBlogDate {
+    font-size: 1vw;
+    text-align: center;
+    justify-content: center;
+}
+
+.discriptionBlog {
+    white-space: nowrap;
+    position: relative;
+    width: 300px;
+    height: 100%;
+    resize: none;
+    left: 5%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+}
+
+.confirmDelete {
+    position: fixed;
+    width: 50%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AuthServiceService } from '../services/auth-service.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Users } from './users';
@@ -30,10 +30,10 @@ user$ = this.authSer.$CurrentUser;
 
 
   signupForm = new FormGroup({
-    name: new FormControl(''),
-    password: new FormControl(''),
-    email: new FormControl(''),
-    passwordConfirm: new FormControl(''),
+    name: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
+    email: new FormControl('',[Validators.required,Validators.email]),
+    passwordConfirm: new FormControl('',[Validators.required]),
     dob: new FormControl(''),
   },
     {validators:passMatched()}
@@ -77,7 +77,7 @@ user$ = this.authSer.$CurrentUser;
       ( this.toast.observe({
         success:'You are successfully signed up',
         loading:'Signing - in',
-        error:'error'
+        error:'error check all Fields'
       })
     ).subscribe(()=>{
       this.authSer.$CurrentUser;

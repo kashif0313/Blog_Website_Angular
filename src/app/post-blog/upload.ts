@@ -8,5 +8,6 @@ export interface uploadBlog
     imageSrc:string,
     uploadBy:string,
     date:string,
-    time:string
+    time:string,
+    uploadID:string
 }

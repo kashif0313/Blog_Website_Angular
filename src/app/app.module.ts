@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostBlogComponent } from './post-blog/post-blog.component';
@@ -30,20 +29,8 @@ import { getAuth } from 'firebase/auth';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { UploadProfileImgComponent } from './upload-profile-img/upload-profile-img.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
-const routes: Routes = [
-  {path: 'signUpPage', component: SignupComponent },
-  {path: 'loginPage', component: LoginComponent },
-  {path: 'Home', component: AppComponent },
-  {path: 'Blog/:object', component: GetBlogComponent },
-  {path: 'addBlog', component: PostBlogComponent },
-  {path: 'blogsHome', component: LatestBlogsComponent },
-  {path: 'userProfile', component: UserProfileComponent },
-  {path: 'EditBlog/:object', component: UpdateBlogComponent },
-  {path: 'userProfileImg', component: UploadProfileImgComponent },
-  {path: '', redirectTo: 'blogsHome', pathMatch: 'full'}
-  
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,11 +43,11 @@ const routes: Routes = [
     SignupComponent,
     LoginComponent,
     UploadProfileImgComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

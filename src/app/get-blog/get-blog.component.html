@@ -1,6 +1,10 @@
 <div class="getBlog" *ngFor='let doc of blogArrayGet'>
-    {{"Date : "+doc.date}}{{" \n Time : "+doc.time}}
+
     <div class="blogTitle">{{doc.title}} </div>
-    <img src="{{doc.imageSrc}}" class="blogImage">{{"by " + doc.uploadBy}}
+    <img src="{{doc.imageSrc}}" class="blogImage">
+    <div class="detailsUpload">
+        <div class="dateTime">{{"Date : "+doc.date}}{{" \n Time : "+doc.time}}</div>
+        <div class="uploadByName">{{"by " + doc.uploadBy}}</div>
+    </div>
     <div class="BlogTextarea">{{doc.blog}}</div>
 </div>

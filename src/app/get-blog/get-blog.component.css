@@ -9,6 +9,24 @@
 .blogTitle {
     position: relative;
     font-size: 2vw;
+    margin: 2%;
+}
+
+.detailsUpload {
+    position: relative;
+    display: flex;
+}
+
+.dateTime {
+    position: relative;
+    display: inline-block;
+    flex: 2;
+}
+
+.uploadByName {
+    position: relative;
+    display: inline-block;
+    flex: 2;
 }
 
 .blogImage {

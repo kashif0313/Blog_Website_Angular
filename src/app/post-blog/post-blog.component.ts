@@ -4,6 +4,7 @@ import { uploadBlog } from './upload';
 import {getDownloadURL, ref, Storage, uploadBytesResumable} from '@angular/fire/storage'
 import { AppComponent } from '../app.component';
 import {  Router } from '@angular/router';
+import { AuthServiceService } from '../services/auth-service.service';
 
 
 @Component({
@@ -28,12 +29,13 @@ export class PostBlogComponent implements OnInit {
     imageSrc:"",
     uploadBy:"",
     date:"",
-    time:""
+    time:"",
+    uploadID:""
   }
   file: any;
   UploadingProgress: number=0;
 
-  constructor(private afm:AngularFirestore,private storage:Storage,private home:AppComponent,private router:Router) { }
+  constructor(private afm:AngularFirestore,private storage:Storage,private home:AppComponent,private router:Router,public authService:AuthServiceService) { }
 
   ngOnInit(): void {
   }
@@ -62,6 +64,7 @@ export class PostBlogComponent implements OnInit {
     //console.log("collection id = "+uBlog.id);
     const returnCollection = this.afm.collection('/Blogs').add(uBlog);
     this.resetData();
+    this.closeAddBlog();
     return returnCollection;
     
   }
@@ -74,6 +77,7 @@ export class PostBlogComponent implements OnInit {
     this.uploadBlog.uploadBy = this.uploadBy;
     this.uploadBlog.date = this.uploadDate;
     this.uploadBlog.time = this.uploadTime;
+    this.uploadBlog.uploadID = this.authService.userNewId;
 
     const storageRef = ref(this.storage,this.file.name);
     const uploadTask = uploadBytesResumable(storageRef ,this.file);
