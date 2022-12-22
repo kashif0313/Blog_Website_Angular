@@ -1,7 +1,30 @@
 # Blog Website in Angular Framework (still in Developement)
-this website Backend is in firebase and Ui is Angular Material UI<br>
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+## About Project
+This project is about learning angular framework and learning how to contribute to open source project.
+<br>This is beginner project and under development few function might not be working properly<br>
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Install Firebase
+
+```
+ng add @angular/fire
+```
+
+Install Hoat toast
+
+```
+ng add @ngneat/hot-toast
+```
+
+## Technology used
+* <img src="https://angular.io/assets/images/logos/angular/shield-large.svg" alt="angular" width="60" height="60"/> <br>[ Angular ] - The web framework used
+* <img src="https://material.angular.io/assets/img/angular-material-logo.svg" alt="angular" width="60" height="60"/><br>[ Angular Material UI ] - User Interface
+* <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="60" height="60"/><br>[ Firebase ] - Backend Dtatbase
+ 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -22,6 +45,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Authors
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* **Kashif Imran** - *Initial work* - [ kashif0313 ](https://github.com/kashif0313)
