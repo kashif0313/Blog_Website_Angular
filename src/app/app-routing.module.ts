@@ -9,29 +9,34 @@ import { SignupComponent } from './signup/signup.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { UploadProfileImgComponent } from './upload-profile-img/upload-profile-img.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { redirectUnauthorizedTo,canActivate,redirectLoggedInTo} from '@angular/fire/auth-guard';
+import {
+  redirectUnauthorizedTo,
+  canActivate,
+  redirectLoggedInTo,
+} from '@angular/fire/auth-guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-const redirectToLogin = () => redirectUnauthorizedTo (['loginPage']);
-const redirectToHome = ()=> redirectLoggedInTo(['Home'])
+const redirectToLogin = () => redirectUnauthorizedTo(['loginPage']);
+const redirectToHome = () => redirectLoggedInTo(['Home']);
 
 const routes: Routes = [
-  {path: 'signUpPage', component: SignupComponent },
-  {path: 'loginPage', component: LoginComponent ,...canActivate(redirectToHome)},
-  {path: 'Home', component: AppComponent },
-  {path: 'Blog/:object', component: GetBlogComponent },
-  {path: 'addBlog', component: PostBlogComponent },
-  {path: 'blogsHome', component: LatestBlogsComponent },
-  {path: 'userProfile', component: UserProfileComponent,...canActivate(redirectToLogin) },
-  {path: 'EditBlog', component: UpdateBlogComponent },
-  {path: 'userProfileImg', component: UploadProfileImgComponent },
-  {path: 'dashboardPage', component: DashboardComponent },
-  {path: '', redirectTo: 'blogsHome', pathMatch: 'full'}
-  
+  { path: 'signUpPage', component: SignupComponent },
+  // {path: 'loginPage', component: LoginComponent ,...canActivate(redirectToHome)},
+  { path: 'loginPage', component: LoginComponent },
+  { path: 'Home', component: AppComponent },
+  { path: 'Blog/:object', component: GetBlogComponent },
+  { path: 'addBlog', component: PostBlogComponent },
+  { path: 'blogsHome', component: LatestBlogsComponent },
+  // {path: 'userProfile', component: UserProfileComponent,...canActivate(redirectToLogin) },
+  { path: 'userProfile', component: UserProfileComponent },
+  { path: 'EditBlog', component: UpdateBlogComponent },
+  { path: 'userProfileImg', component: UploadProfileImgComponent },
+  { path: 'dashboardPage', component: DashboardComponent },
+  { path: '', redirectTo: 'blogsHome', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

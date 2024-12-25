@@ -1,10 +1,59 @@
-<div class="getBlog" *ngFor='let doc of blogArrayGet'>
+<div class="getBlog" *ngFor="let doc of blogArrayGet">
+    <!-- Blog Header -->
+    <mat-card class="blog-card">
+        <mat-card-header>
+            <mat-card-title>{{ doc.title }}</mat-card-title>
+            <mat-card-subtitle>
+                <div class="detailsUpload">
+                    <span>{{ "Date: " + doc.date }} | {{ "Time: " + doc.time }}</span>
+                    <br />
+                    <span>{{ "by " + doc.uploadBy }}</span>
+                </div>
+            </mat-card-subtitle>
+        </mat-card-header>
 
-    <div class="blogTitle">{{doc.title}} </div>
-    <img src="{{doc.imageSrc}}" class="blogImage">
-    <div class="detailsUpload">
-        <div class="dateTime">{{"Date : "+doc.date}}{{" \n Time : "+doc.time}}</div>
-        <div class="uploadByName">{{"by " + doc.uploadBy}}</div>
-    </div>
-    <div class="BlogTextarea">{{doc.blog}}</div>
+        <!-- Blog Image -->
+        <img mat-card-image [src]="doc.imageSrc" alt="{{ doc.title }}" />
+
+        <!-- Blog Content -->
+        <mat-card-content>
+            <p [innerHTML]=doc.fullBlog></p>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Comments Section -->
+    <mat-card class="comments-card">
+        <mat-card-header>
+            <mat-card-title>Comments</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <!-- Display Comments -->
+            <div *ngIf="doc.comments && doc.comments.length > 0; else noComments">
+                <mat-list>
+                    <mat-list-item *ngFor="let comment of doc.comments">
+                        <div>
+                            <p><strong>{{ comment.userName }}:</strong> {{ comment.text }}</p>
+                            <p class="comment-date">{{ "Posted on: " + comment.date }}</p>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+
+            <!-- No Comments Placeholder -->
+            <ng-template #noComments>
+                <p>No comments yet. Be the first to comment!</p>
+            </ng-template>
+        </mat-card-content>
+
+        <!-- Add Comment Section -->
+        <mat-card-actions>
+            <mat-form-field appearance="outline" class="comment-input">
+                <textarea matInput [(ngModel)]="newCommentText" placeholder="Write a comment..." rows="3"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="addComment(doc.id)" [disabled]="!newCommentText.trim()">
+                Add Comment
+            </button>
+        </mat-card-actions>
+    </mat-card>
 </div>

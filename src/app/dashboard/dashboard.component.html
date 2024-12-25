@@ -1,12 +1,10 @@
-<div class="latestBlogsCont">
+<!-- <div class="latestBlogsCont">
 
     <button mat-raised-button color="warn" [routerLink]="['/addBlog']">Add Blog</button>
     <mat-card>
         <div class="latestBlogs" *ngFor='let doc of  blogArray;let i=index'>
             <img mat-card-image src={{doc.imageSrc}} class="imgBlog">
-            <!-- <input type="text" class="latestBlogTitle" value={{doc.title}} readonly><br> -->
             <mat-card-title>{{doc.title}}</mat-card-title> <br>
-            <!-- <input type="text" class="latestBlogDate" value={{doc.id}} readonly> -->
             <mat-card-content class="discriptionBlog">{{doc.blog}}</mat-card-content>
             <mat-card-actions>
 
@@ -28,4 +26,77 @@
             </mat-card>
         </div>
     </mat-card>
+</div> -->
+<button mat-raised-button color="warn" [routerLink]="['/addBlog']">Add Blog</button>
+
+<div class="latestBlogsCont">
+    <table mat-table [dataSource]="blogArray" class="mat-elevation-z8">
+        <!-- id-->
+        <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let doc; let i = index">
+                {{i+1}}.
+            </td>
+        </ng-container>
+        <!-- Avatar Column -->
+        <ng-container matColumnDef="profileImage">
+            <th mat-header-cell *matHeaderCellDef> Avatar </th>
+            <td mat-cell *matCellDef="let doc">
+                <img mat-card-avatar [src]="doc.profileImage" alt="{{ doc.uploadBy }}'s Photo" class="avatar">
+            </td>
+        </ng-container>
+
+        <!-- Author Column -->
+        <ng-container matColumnDef="uploadBy">
+            <th mat-header-cell *matHeaderCellDef> Author </th>
+            <td mat-cell *matCellDef="let doc"> {{ doc.uploadBy }} </td>
+        </ng-container>
+
+        <!-- Blog Image Column -->
+        <ng-container matColumnDef="imageSrc">
+            <th mat-header-cell *matHeaderCellDef> Image </th>
+            <td mat-cell *matCellDef="let doc">
+                <div class="image-wrapper">
+                    <img [src]="doc.imageSrc" alt="Blog Image" />
+                </div>
+            </td>
+        </ng-container>
+
+
+        <!-- Blog Content Column -->
+        <ng-container matColumnDef="blog">
+            <th mat-header-cell *matHeaderCellDef> Blog </th>
+            <td mat-cell *matCellDef="let doc"> {{ doc.title }} </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let doc; let i = index">
+                <button mat-raised-button color="secondary" (click)="sendingBlogID(i)">Read More</button><br>
+                <!-- <button mat-raised-button color="primary" (click)="editBlogdata(doc.id)">Edit</button><br> -->
+                <button mat-raised-button color="warn" (click)="deleteConfirmation(doc.id, doc.title)">Delete</button>
+            </td>
+        </ng-container>
+
+        <!-- Table Header and Rows -->
+        <tr mat-header-row *matHeaderRowDef="['ID','profileImage', 'uploadBy', 'imageSrc', 'blog', 'actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['ID','profileImage', 'uploadBy', 'imageSrc', 'blog', 'actions'];">
+        </tr>
+    </table>
+
+    <!-- Confirm Delete Popup -->
+    <div class="overlay" *ngIf="deleteConfirm === 'block'">
+        <div class="confirmDelete">
+            <mat-card>
+                <mat-card-title>Confirm Delete</mat-card-title>
+                <mat-card-subtitle>{{ deleteBlogTitle }}</mat-card-subtitle>
+                <mat-card-actions>
+                    <button mat-button (click)="cancelDelete()">Cancel</button>
+                    <button mat-raised-button color="warn" (click)="deleteBlogdata()">Delete Blog</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
 </div>

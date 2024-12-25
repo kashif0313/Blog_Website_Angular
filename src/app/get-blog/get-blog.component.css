@@ -1,50 +1,54 @@
 .getBlog {
-    position: relative;
-    left: 10%;
-    width: 80%;
-    justify-content: center;
-    text-align: center;
+  margin-bottom: 24px;
 }
 
-.blogTitle {
-    position: relative;
-    font-size: 2vw;
-    margin: 2%;
+.blog-card {
+  margin-bottom: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 80%; /* Default width for larger screens */
+  margin-left: auto;
+  margin-right: auto; /* Center the card */
 }
 
 .detailsUpload {
-    position: relative;
-    display: flex;
+  font-size: 14px;
+  color: #757575;
 }
 
-.dateTime {
-    position: relative;
-    display: inline-block;
-    flex: 2;
+.comments-card {
+  margin-bottom: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 80%; /* Default width for larger screens */
+  margin-left: auto;
+  margin-right: auto; /* Center the card */
 }
 
-.uploadByName {
-    position: relative;
-    display: inline-block;
-    flex: 2;
+.comment-date {
+  font-size: 12px;
+  color: #757575;
+  margin-top: 4px;
 }
 
-.blogImage {
-    position: relative;
-    width: 80%;
-    left: 0%;
-    height: 300px;
-    object-fit: contain;
-    border: 2px solid red;
-    border-radius: 30px;
+.comment-input {
+  width: 100%;
+  margin: 8px 0;
+}
+.mat-card-image {
+  width: 100%; /* Full width for images on smaller screens */
+  height: 300px;
+  object-fit: contain;
 }
 
-.BlogTextarea {
-    position: relative;
-    font-size: 1.2vw;
-    width: 100%;
-    text-align: center;
-    word-wrap: break-word;
-    border: 2px solid green;
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .blog-card {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .mat-card-image {
+    width: 100%; /* Full width for images on smaller screens */
     height: auto;
+  }
 }

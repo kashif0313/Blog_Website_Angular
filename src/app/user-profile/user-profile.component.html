@@ -1,22 +1,52 @@
-<mat-card class="Signup">
-    <h1>Profile</h1>
+<mat-card class="profile-card">
+    <h1 class="profile-header">Profile</h1>
     <form (ngSubmit)="submit()">
-        <ng-container *ngIf="authSer.$CurrentUser |async as user">
+        <ng-container *ngIf="logUser">
+            <div class="profile-container">
+                <!-- Profile Image Section -->
+                <div class="profile-image-container">
+                    <img [src]="previewAlt" alt="Profile Image" class="profile-image" />
+                    <input type="file" (change)="uploadedImage($event)" hidden #uploadProfileImg />
+                    <button mat-mini-fab class="upload-button" (click)="uploadProfileImg.click()">
+                        <mat-icon>camera_alt</mat-icon>
+                    </button>
+                </div>
 
-            <div class="uploadImage">
-                <img [src]="user.photoURL" alt="" class="profileimg">
-                <input type="file" (change)="uploadedImage($event)" hidden #uploadProfileImg>
-                <button mat-mini-fab (click)="uploadProfileImg.click()"><mat-icon>add</mat-icon></button>
+                <!-- Profile Details Section -->
+                <div class="profile-details">
+                    <!-- Name Field -->
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" [value]="staticName" #name />
+                    </mat-form-field>
+                    <br />
+
+                    <!-- Email Field -->
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" [value]="staticEmail" #email />
+                    </mat-form-field>
+                    <br />
+
+                    <!-- Password Field with Visibility Toggle -->
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="hidePassword ? 'password' : 'text'" [value]="staticPassword"
+                            #password />
+                        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                            [attr.aria-label]="'Toggle password visibility'" [attr.aria-pressed]="!hidePassword">
+                            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
             </div>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Name</mat-label>
-                <input matInput type="text" [value]="user.displayName" #name>
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" [value]="user.email" #email>
-            </mat-form-field><br>
-            <button mat-raised-button color="primary">Update</button>
+
+            <!-- Update Button -->
+            <div class="profile-actions">
+                <button mat-raised-button color="primary" class="update-button">
+                    Update
+                </button>
+            </div>
         </ng-container>
     </form>
 </mat-card>

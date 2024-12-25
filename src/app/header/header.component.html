@@ -4,36 +4,35 @@
     <span>My App</span>
     <span class="example-spacer"></span>
     <button mat-raised-button color="primary" (click)="homeGOTO()">Home</button>
-    <ng-container *ngIf="authService.$CurrentUser |async as user">
+    <ng-container *ngIf="logUser">
         <button mat-raised-button color="accent" [routerLink]="['/dashboardPage']">Dashboard</button>
     </ng-container>
     <span class="example-spacer1"></span>
-    <ng-container *ngIf="authService.$CurrentUser |async as user">
+    <ng-container *ngIf="logUser">
         <span class="welcomeName">
-        {{"Welcome "+user.displayName}}
-    </span>
+            <!-- {{"Welcome "+user.displayName}} -->
+            Welcome {{name}}
+        </span>
     </ng-container>
-    <ng-container *ngIf="authService.$CurrentUser |async as user; else visitor">
+    <!-- <ng-container *ngIf="authService.$CurrentUser |async as user; else visitor">
 
         <img src="{{user.photoURL}}" [matMenuTriggerFor]="menu" class="headerImage" alt="">
 
+    </ng-container> -->
+    <ng-container *ngIf="!logUser" style="gap: 5px;">
+        <button mat-raised-button [routerLink]="['/loginPage']">Login</button>
+        <button mat-raised-button [routerLink]="['/signUpPage']">Signup</button>
     </ng-container>
-    <ng-template #visitor>
+    <ng-container *ngIf="logUser">
         <button mat-fab color="warn" aria-label="Example icon button with a home icon">
-     
+
             <mat-icon [matMenuTriggerFor]="menu">person</mat-icon>
-</button>
-    </ng-template>
+        </button>
+    </ng-container>
     <mat-menu #menu="matMenu">
-        <ng-container *ngIf="authService.$CurrentUser |async as user; else loginbtn">
+        <ng-container *ngIf="logUser">
             <button mat-menu-item (click)="logOut()">Logout</button>
             <button mat-menu-item (click)="profile()">Profile</button>
         </ng-container>
-        <ng-template #loginbtn>
-            <button mat-menu-item [routerLink]="['/loginPage']">Login</button>
-            <button mat-menu-item [routerLink]="['/signUpPage']">Signup</button>
-        </ng-template>
-
-
     </mat-menu>
 </mat-toolbar>

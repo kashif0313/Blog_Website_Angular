@@ -1,16 +1,26 @@
 <div class="latestBlogsCont">
-    <mat-card>
-        <div class="latestBlogs" *ngFor='let doc of  blogArray;let i=index'>
-            <img mat-card-image src={{doc.imageSrc}} class="imgBlog">
-            <!-- <input type="text" class="latestBlogTitle" value={{doc.title}} readonly><br> -->
-            <mat-card-title>{{doc.title}}</mat-card-title> <br>
-            <!-- <input type="text" class="latestBlogDate" value={{doc.id}} readonly> -->
-            <mat-card-content class="discriptionBlog">{{doc.blog}}</mat-card-content>
+    <div class="latestBlogs" *ngFor="let doc of blogArray; let i = index">
+        <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+                <img mat-card-avatar [src]="doc.profileImage" alt="{{ doc.uploadBy }}'s Photo">
+                <mat-card-title>{{ doc.uploadBy }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="doc.imageSrc" alt="Blog Image">
+            <mat-card-content>
+                <p class="discriptionBlog">
+                    {{ doc.blog }}
+                </p>
+            </mat-card-content>
             <mat-card-actions>
-
-
                 <button mat-button (click)="sendingBlogID(i)">Read More</button>
+                <button mat-icon-button aria-label="Like">
+                    <mat-icon>thumb_up</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Share">
+                    <mat-icon>share</mat-icon>
+                </button>
             </mat-card-actions>
-        </div>
-    </mat-card>
+
+        </mat-card>
+    </div>
 </div>
